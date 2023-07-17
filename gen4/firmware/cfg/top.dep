@@ -1,0 +1,21 @@
+src --vhdl2008  emp_payload.vhd
+
+src -c gen4_vhdl: gen4_gen_puppi_ptLUT_V_ROM_AUTO_1R.vhd  
+src -c gen4_vhdl: gen4_mul_mul_11ns_7ns_18_4_1.vhd
+src -c gen4_vhdl: gen4_gen_puppi.vhd                      
+src -c gen4_vhdl: gen4_mul_mul_12ns_11ns_23_4_1.vhd
+src -c gen4_vhdl: gen4_mul_mul_10ns_10ns_20_4_1.vhd       
+src -c gen4_vhdl: gen4_NLUT_V_ROM_AUTO_1R.vhd
+src -c gen4_vhdl: gen4_mul_mul_11ns_11ns_22_4_1.vhd       
+src -c gen4_vhdl: gen4.vhd
+
+src -c emp-fwk:components/datapath emp_data_types.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd
+src -c emp-fwk:components/ttc emp_ttc_decl.vhd
+src -c emp-fwk:components/payload ../ucf/emp_simple_payload.tcl
+
+addrtab -c emp-fwk:components/payload emp_payload.xml
+
+? toolset.lower() == "vivado" ? setup -c emp-fwk:components/payload emp_simple_payload_msg_suppressions.tcl
+include -c emp-fwk:boards/serenity/dc_ku15p dc_ku15p_sm1_v2.dep
+src --vhdl2008   emp_project_decl_ku15p.vhd
