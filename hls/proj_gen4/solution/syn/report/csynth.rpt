@@ -1,0 +1,235 @@
+
+
+================================================================
+== Synthesis Summary Report of 'gen4'
+================================================================
++ General Information: 
+    * Date:           Fri Jul 14 17:20:39 2023
+    * Version:        2021.2 (Build 3367213 on Tue Oct 19 02:47:39 MDT 2021)
+    * Project:        proj_gen4
+    * Solution:       solution (Vivado IP Flow Target)
+    * Product family: kintexuplus
+    * Target device:  xcku15p-ffva1760-2-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------+------+------+---------+--------+----------+---------+------+----------+---------+----------+------------+------------+-----+
+    |    Modules   | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |          |            |            |     |
+    |    & Loops   | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   |    DSP   |     FF     |     LUT    | URAM|
+    +--------------+------+------+---------+--------+----------+---------+------+----------+---------+----------+------------+------------+-----+
+    |+ gen4        |     -|  0.05|       11|  27.500|         -|        1|     -|       yes|  6 (~0%)|  14 (~0%)|  11276 (1%)|  2623 (~0%)|    -|
+    | + gen_puppi  |     -|  0.59|        4|  10.000|         -|        1|     -|       yes|  1 (~0%)|   3 (~0%)|   259 (~0%)|   239 (~0%)|    -|
+    | + gen_puppi  |     -|  0.59|        4|  10.000|         -|        1|     -|       yes|  1 (~0%)|   3 (~0%)|   259 (~0%)|   239 (~0%)|    -|
+    | + gen_puppi  |     -|  0.59|        4|  10.000|         -|        1|     -|       yes|  1 (~0%)|   3 (~0%)|   259 (~0%)|   239 (~0%)|    -|
+    | + gen_puppi  |     -|  0.59|        4|  10.000|         -|        1|     -|       yes|  1 (~0%)|   3 (~0%)|   259 (~0%)|   239 (~0%)|    -|
+    +--------------+------+------+---------+--------+----------+---------+------+----------+---------+----------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* REGISTER
++-----------------------+---------+----------+
+| Interface             | Mode    | Bitwidth |
++-----------------------+---------+----------+
+| CLOCK_RATIO_MINUS_ONE | ap_none | 4        |
+| data_out_0            | ap_none | 64       |
+| data_out_1            | ap_none | 64       |
+| data_out_2            | ap_none | 64       |
+| data_out_3            | ap_none | 64       |
+| end_out_0             | ap_none | 1        |
+| end_out_1             | ap_none | 1        |
+| end_out_2             | ap_none | 1        |
+| end_out_3             | ap_none | 1        |
+| orbit_out_0           | ap_none | 1        |
+| orbit_out_1           | ap_none | 1        |
+| orbit_out_2           | ap_none | 1        |
+| orbit_out_3           | ap_none | 1        |
+| p_idxs_0              | ap_none | 64       |
+| p_idxs_1              | ap_none | 64       |
+| p_idxs_2              | ap_none | 64       |
+| p_idxs_3              | ap_none | 64       |
+| set                   | ap_none | 1        |
+| start_out_0           | ap_none | 1        |
+| start_out_1           | ap_none | 1        |
+| start_out_2           | ap_none | 1        |
+| start_out_3           | ap_none | 1        |
+| valid                 | ap_none | 1        |
+| valid_out_0           | ap_none | 1        |
+| valid_out_1           | ap_none | 1        |
+| valid_out_2           | ap_none | 1        |
+| valid_out_3           | ap_none | 1        |
++-----------------------+---------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-----------------------+-----------+--------------+
+| Argument              | Direction | Datatype     |
++-----------------------+-----------+--------------+
+| valid                 | in        | bool         |
+| set                   | in        | bool         |
+| p_idxs                | in        | ap_uint<64>* |
+| data_out              | out       | ap_uint<64>* |
+| orbit_out             | out       | bool*        |
+| start_out             | out       | bool*        |
+| end_out               | out       | bool*        |
+| valid_out             | out       | bool*        |
+| CLOCK_RATIO_MINUS_ONE | in        | ap_uint<4>   |
++-----------------------+-----------+--------------+
+
+* SW-to-HW Mapping
++-----------------------+-----------------------+---------+
+| Argument              | HW Interface          | HW Type |
++-----------------------+-----------------------+---------+
+| valid                 | valid                 | port    |
+| set                   | set                   | port    |
+| p_idxs                | p_idxs_0              | port    |
+| p_idxs                | p_idxs_1              | port    |
+| p_idxs                | p_idxs_2              | port    |
+| p_idxs                | p_idxs_3              | port    |
+| data_out              | data_out_0            | port    |
+| data_out              | data_out_0_ap_vld     | port    |
+| data_out              | data_out_1            | port    |
+| data_out              | data_out_1_ap_vld     | port    |
+| data_out              | data_out_2            | port    |
+| data_out              | data_out_2_ap_vld     | port    |
+| data_out              | data_out_3            | port    |
+| data_out              | data_out_3_ap_vld     | port    |
+| orbit_out             | orbit_out_0           | port    |
+| orbit_out             | orbit_out_0_ap_vld    | port    |
+| orbit_out             | orbit_out_1           | port    |
+| orbit_out             | orbit_out_1_ap_vld    | port    |
+| orbit_out             | orbit_out_2           | port    |
+| orbit_out             | orbit_out_2_ap_vld    | port    |
+| orbit_out             | orbit_out_3           | port    |
+| orbit_out             | orbit_out_3_ap_vld    | port    |
+| start_out             | start_out_0           | port    |
+| start_out             | start_out_0_ap_vld    | port    |
+| start_out             | start_out_1           | port    |
+| start_out             | start_out_1_ap_vld    | port    |
+| start_out             | start_out_2           | port    |
+| start_out             | start_out_2_ap_vld    | port    |
+| start_out             | start_out_3           | port    |
+| start_out             | start_out_3_ap_vld    | port    |
+| end_out               | end_out_0             | port    |
+| end_out               | end_out_0_ap_vld      | port    |
+| end_out               | end_out_1             | port    |
+| end_out               | end_out_1_ap_vld      | port    |
+| end_out               | end_out_2             | port    |
+| end_out               | end_out_2_ap_vld      | port    |
+| end_out               | end_out_3             | port    |
+| end_out               | end_out_3_ap_vld      | port    |
+| valid_out             | valid_out_0           | port    |
+| valid_out             | valid_out_0_ap_vld    | port    |
+| valid_out             | valid_out_1           | port    |
+| valid_out             | valid_out_1_ap_vld    | port    |
+| valid_out             | valid_out_2           | port    |
+| valid_out             | valid_out_2_ap_vld    | port    |
+| valid_out             | valid_out_3           | port    |
+| valid_out             | valid_out_3_ap_vld    | port    |
+| CLOCK_RATIO_MINUS_ONE | CLOCK_RATIO_MINUS_ONE | port    |
++-----------------------+-----------------------+---------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+  No burst in design
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                           | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++--------------------------------+-----+--------+-------------+-----+--------+---------+
+| + gen4                         | 14  |        |             |     |        |         |
+|   ret_fu_1053_p2               | -   |        | ret         | add | fabric | 0       |
+|   add_ln229_1_fu_1153_p2       | -   |        | add_ln229_1 | add | fabric | 0       |
+|   add_ln885_fu_883_p2          | -   |        | add_ln885   | add | fabric | 0       |
+|   add_ln885_1_fu_911_p2        | -   |        | add_ln885_1 | add | fabric | 0       |
+|   mul_mul_11ns_7ns_18_4_1_U9   | 1   |        | r_V_1       | mul | dsp    | 3       |
+|   N_5_fu_1005_p2               | -   |        | N_5         | add | fabric | 0       |
+|   add_ln229_fu_1212_p2         | -   |        | add_ln229   | add | fabric | 0       |
+|   add_ln885_2_fu_944_p2        | -   |        | add_ln885_2 | add | fabric | 0       |
+|   mul_mul_11ns_7ns_18_4_1_U10  | 1   |        | r_V         | mul | dsp    | 3       |
+|   N_4_fu_1031_p2               | -   |        | N_4         | add | fabric | 0       |
+|  + gen_puppi                   | 3   |        |             |     |        |         |
+|    mul_mul_12ns_11ns_23_4_1_U1 | 1   |        | ret         | mul | dsp    | 3       |
+|    eta_V_fu_214_p2             | -   |        | eta_V       | add | fabric | 0       |
+|    mul_mul_11ns_11ns_22_4_1_U3 | 1   |        | ret_1       | mul | dsp    | 3       |
+|    phi_V_fu_232_p2             | -   |        | phi_V       | add | fabric | 0       |
+|    mul_mul_10ns_10ns_20_4_1_U2 | 1   |        | ret_2       | mul | dsp    | 3       |
+|  + gen_puppi                   | 3   |        |             |     |        |         |
+|    mul_mul_12ns_11ns_23_4_1_U1 | 1   |        | ret         | mul | dsp    | 3       |
+|    eta_V_fu_214_p2             | -   |        | eta_V       | add | fabric | 0       |
+|    mul_mul_11ns_11ns_22_4_1_U3 | 1   |        | ret_1       | mul | dsp    | 3       |
+|    phi_V_fu_232_p2             | -   |        | phi_V       | add | fabric | 0       |
+|    mul_mul_10ns_10ns_20_4_1_U2 | 1   |        | ret_2       | mul | dsp    | 3       |
+|  + gen_puppi                   | 3   |        |             |     |        |         |
+|    mul_mul_12ns_11ns_23_4_1_U1 | 1   |        | ret         | mul | dsp    | 3       |
+|    eta_V_fu_214_p2             | -   |        | eta_V       | add | fabric | 0       |
+|    mul_mul_11ns_11ns_22_4_1_U3 | 1   |        | ret_1       | mul | dsp    | 3       |
+|    phi_V_fu_232_p2             | -   |        | phi_V       | add | fabric | 0       |
+|    mul_mul_10ns_10ns_20_4_1_U2 | 1   |        | ret_2       | mul | dsp    | 3       |
+|  + gen_puppi                   | 3   |        |             |     |        |         |
+|    mul_mul_12ns_11ns_23_4_1_U1 | 1   |        | ret         | mul | dsp    | 3       |
+|    eta_V_fu_214_p2             | -   |        | eta_V       | add | fabric | 0       |
+|    mul_mul_11ns_11ns_22_4_1_U3 | 1   |        | ret_1       | mul | dsp    | 3       |
+|    phi_V_fu_232_p2             | -   |        | phi_V       | add | fabric | 0       |
+|    mul_mul_10ns_10ns_20_4_1_U2 | 1   |        | ret_2       | mul | dsp    | 3       |
++--------------------------------+-----+--------+-------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++--------------+------+------+--------+----------+---------+------+---------+
+| Name         | BRAM | URAM | Pragma | Variable | Storage | Impl | Latency |
++--------------+------+------+--------+----------+---------+------+---------+
+| + gen4       | 6    | 0    |        |          |         |      |         |
+|   NLUT_V_U   | 2    | -    |        | NLUT_V   | rom_1p  | auto | 1       |
+|  + gen_puppi | 1    | 0    |        |          |         |      |         |
+|    ptLUT_V_U | 1    | -    |        | ptLUT_V  | rom_1p  | auto | 1       |
+|  + gen_puppi | 1    | 0    |        |          |         |      |         |
+|    ptLUT_V_U | 1    | -    |        | ptLUT_V  | rom_1p  | auto | 1       |
+|  + gen_puppi | 1    | 0    |        |          |         |      |         |
+|    ptLUT_V_U | 1    | -    |        | ptLUT_V  | rom_1p  | auto | 1       |
+|  + gen_puppi | 1    | 0    |        |          |         |      |         |
+|    ptLUT_V_U | 1    | -    |        | ptLUT_V  | rom_1p  | auto | 1       |
++--------------+------+------+--------+----------+---------+------+---------+
+
+
+================================================================
+== User Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+----------------------------------+---------------------+
+| Type            | Options                          | Location            |
++-----------------+----------------------------------+---------------------+
+| array_partition | variable = data_out complete     | gen4.cc:99 in gen4  |
+| array_partition | variable = orbit_out complete    | gen4.cc:100 in gen4 |
+| array_partition | variable = start_out complete    | gen4.cc:101 in gen4 |
+| array_partition | variable = end_out complete      | gen4.cc:102 in gen4 |
+| array_partition | variable = p_idxs complete       | gen4.cc:103 in gen4 |
+| array_partition | variable = valid_out complete    | gen4.cc:104 in gen4 |
+| stable          | variable = CLOCK_RATIO_MINUS_ONE | gen4.cc:105 in gen4 |
+| pipeline        | II = 1                           | gen4.cc:106 in gen4 |
++-----------------+----------------------------------+---------------------+
+
+

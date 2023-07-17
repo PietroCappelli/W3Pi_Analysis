@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="gen4.cc" path="/home/pcappell/hls/gen_project/gen4.cc"/>
+    <originFiles name="gen4.h" path="/home/pcappell/hls/gen_project/gen4.h"/>
+  </source>
+  <testbench>
+    <originFiles name="gen4_test.cpp" path="/home/pcappell/hls/gen_project/gen4_test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

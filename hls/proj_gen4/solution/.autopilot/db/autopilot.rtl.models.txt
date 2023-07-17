@@ -1,0 +1,8 @@
+gen4_mul_mul_12ns_11ns_23_4_1
+gen4_mul_mul_10ns_10ns_20_4_1
+gen4_mul_mul_11ns_11ns_22_4_1
+gen4_gen_puppi_ptLUT_V_ROM_AUTO_1R
+gen4_mul_mul_11ns_7ns_18_4_1
+gen4_NLUT_V_ROM_AUTO_1R
+gen_puppi
+gen4
