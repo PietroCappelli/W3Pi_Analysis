@@ -1,4 +1,6 @@
 *.bin
 *.log
 *.jou
-
+*.dump
+*.txt
+*.dat
